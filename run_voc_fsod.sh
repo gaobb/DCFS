@@ -38,8 +38,6 @@ for seed in 0 1 2 3 4 5 6 7 8 9
 do
     for shot in 1 2 3 5 10  
     do
-        #python3 tools/create_config.py --dataset voc --config_root configs/voc                \
-        #    --shot ${shot} --seed ${seed} --setting 'fsod' --split ${SPLIT_ID}
         TRAIN_NOVEL_NAME=voc_2007_trainval_novel${SPLIT_ID}_${shot}shot_seed${seed}
         TEST_NOVEL_NAME=voc_2007_test_novel${SPLIT_ID}
         CONFIG_PATH=configs/voc/dcfs_fsod_${NET}_novelx_${shot}shot_seedx.yaml
@@ -73,8 +71,6 @@ for seed in 0 1 2 3 4 5 6 7 8 9
 do
     for shot in 1 2 3 5 10 
     do
-        #python3 tools/create_config.py --dataset voc --config_root configs/voc               \
-        #    --shot ${shot} --seed ${seed} --setting 'gfsod' --split ${SPLIT_ID}
         TRAIN_ALL_NAME=voc_2007_trainval_all${SPLIT_ID}_${shot}shot_seed${seed}  
         TEST_ALL_NAME=voc_2007_test_all${SPLIT_ID}
         CONFIG_PATH=configs/voc/dcfs_gfsod_${NET}_novelx_${shot}shot_seedx.yaml
