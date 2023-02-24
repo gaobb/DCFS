@@ -233,10 +233,60 @@ class FastRCNNOutputs(object):
         return F.cross_entropy(
             self.pred_class_logits, self.gt_classes, reduction="mean"
         )
-    
+
+    def dc_loss_v1(self):
+        """
+        Compute loss for the decoupling classifier.
+        Return scalar Tensor for single image.
+
+        Args:
+          x: predicted class scores in [-inf, +inf], x's size: N x (1+C), where N is the 
+           number of region proposals of one image.
+          y: ground-truth classification labels in [0, C-1], y's size: N x 1, where [0,C-1] 
+           represent foreground classes and C-1 represents the background class.
+          m: image-level label vector and its element is 0 or 1, m's size: 1 x (1+C)
+
+        Returns:
+        loss
+        """
+        self._log_accuracy()
+
+        loss = 0
+        bg_label = self.pred_class_logits.shape[1]-1
+        num_instances = self.pred_class_logits.shape[0]
+        num_classes = self.pred_class_logits.shape[1]
+
+        for i in range(int(num_instances/512)):
+            start_ind = i*512
+            end_ind = 511 + i*512
+            x = self.pred_class_logits[start_ind:end_ind+1,:]
+            y = self.gt_classes[start_ind:end_ind+1]
+            m = torch.zeros(1, num_classes).to(self.gt_classes.device)
+            m[0,-1] = 1
+            m[0, self.fs_class[i]] = 1
+            N = x.shape[0]
+
+            # positive head
+            pos_ind = y!=bg_label
+            pos_logit= x[pos_ind,:]
+            pos_score = F.softmax(pos_logit, dim=1) # Eq. 4
+            pos_loss = F.nll_loss(pos_score.log(), y[pos_ind], reduction="sum") #Eq. 5
+
+            # negative head
+            neg_ind = y==bg_label
+            neg_logit = x[neg_ind,:]
+            neg_score = F.softmax(m.expand_as(neg_logit)*neg_logit, dim=1) #Eq. 8
+            neg_loss = F.nll_loss(neg_score.log(), y[neg_ind], reduction="sum")  #Eq. 9
+
+            # total loss
+            loss += (pos_loss + neg_loss)/N #Eq. 6
+
+        return loss/(num_instances/512)
+  
     def dc_loss(self):
         """
-        Compute the decoupling classification loss for box classification.
+        Compute the decoupling classification loss for box classification. 
+        The implementation functions of dc_loss and dc_loss_v1 are exactly the same, but the code of the dc_loss is more concise. 
 
         Returns:
             scalar Tensor
