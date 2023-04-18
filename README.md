@@ -2,6 +2,13 @@
 
 This repository is a official PyTorch implementation of [Decoupling Classifier for Boosting Few-shot Object Detection and Instance Segmentation](https://openreview.net/pdf?id=dVXO3Orjmxk) (NeurIPS 2022). This repo is created by Bin-Bin Gao.
 
+	
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/decoupling-classifier-for-boosting-few-shot/few-shot-object-detection-on-ms-coco-1-shot)](https://paperswithcode.com/sota/few-shot-object-detection-on-ms-coco-1-shot?p=decoupling-classifier-for-boosting-few-shot)	
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/decoupling-classifier-for-boosting-few-shot/few-shot-object-detection-on-ms-coco-10-shot)](https://paperswithcode.com/sota/few-shot-object-detection-on-ms-coco-10-shot?p=decoupling-classifier-for-boosting-few-shot)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/decoupling-classifier-for-boosting-few-shot/few-shot-object-detection-on-ms-coco-30-shot)](https://paperswithcode.com/sota/few-shot-object-detection-on-ms-coco-30-shot?p=decoupling-classifier-for-boosting-few-shot)
+
+
+
 <div align="center"><img src="assets/DCFS-PPL.png" width="800"></div>
 
 ## Training and Evaluation
@@ -31,6 +38,13 @@ This repository is a official PyTorch implementation of [Decoupling Classifier f
   |[DeFRCN](https://openaccess.thecvf.com/content/ICCV2021/papers/Qiao_DeFRCN_Decoupled_Faster_R-CNN_for_Few-Shot_Object_Detection_ICCV_2021_paper.pdf) |4.8|8.5|10.7|13.6|16.8|21.2|
   |[DCFS](https://openreview.net/pdf?id=dVXO3Orjmxk)  |**6.2**|**10.4**|**12.9**|**15.7**|**18.3**|**21.9**| 
 
+  |Method| | | mAP<sup>Base</sup> | | | |
+  |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+  | Shot |  1  |  2  |  3  |  5  |  10 |  30 |
+  |[DeFRCN](https://openaccess.thecvf.com/content/ICCV2021/papers/Qiao_DeFRCN_Decoupled_Faster_R-CNN_for_Few-Shot_Object_Detection_ICCV_2021_paper.pdf) |30.4|31.4|32.1|32.6|34.0|34.8|
+  |[DCFS](https://openreview.net/pdf?id=dVXO3Orjmxk)  |**34.4**|**34.7**|**34.9**|**35.0**|**35.7**|**35.8**| 
+
+
 * Few-shot Instance Segmentation
 
   |Method| | | mAP<sup>novel</sup>| | | |
@@ -46,6 +60,12 @@ This repository is a official PyTorch implementation of [Decoupling Classifier f
   | Shot |  1  |  2  |  3  |  5  |  10 |  30 |
   |[Mask-DeFRCN*](https://openaccess.thecvf.com/content/ICCV2021/papers/Qiao_DeFRCN_Decoupled_Faster_R-CNN_for_Few-Shot_Object_Detection_ICCV_2021_paper.pdf) |4.5|7.5|9.5|11.6|14.3|17.6|
   |[DCFS](https://openreview.net/pdf?id=dVXO3Orjmxk)  |**5.7**|**9.4**|**11.5**|**13.5**|**15.7**|**18.3**|
+
+  |Method| | | mAP<sup>base</sup> | | | |
+  |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+  | Shot |  1  |  2  |  3  |  5  |  10 |  30 |
+  |[Mask-DeFRCN*](https://openaccess.thecvf.com/content/ICCV2021/papers/Qiao_DeFRCN_Decoupled_Faster_R-CNN_for_Few-Shot_Object_Detection_ICCV_2021_paper.pdf) |24.6|25.6|26.2|26.8|28.2|29.1|
+  |[DCFS](https://openreview.net/pdf?id=dVXO3Orjmxk)  |**28.0**|**28.5**|**28.9**|**29.1**|**29.9**|**30.3**| 
 
   
 - Please refer to [DeFRCN](https://github.com/er-muyue/DeFRCN) for data peparation and installation details.
