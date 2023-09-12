@@ -46,7 +46,6 @@ do
                        MODEL.ROI_BOX_HEAD.BBOX_CLS_LOSS_TYPE ${classloss} \
                        DATASETS.TRAIN "('"${TRAIN_NOVEL_NAME}"',)" \
                        DATASETS.TEST  "('"${TEST_NOVEL_NAME}"',)"  \
-                       SOLVER.IMS_PER_BATCH  16 \
                        TEST.PCB_MODELPATH ${IMAGENET_PRETRAIN_TORCH} \
                        TEST.PCB_MODELTYPE $NET
         #rm ${OUTPUT_DIR}/model_final.pth
