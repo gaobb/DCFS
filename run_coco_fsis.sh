@@ -41,7 +41,7 @@ do
     do
         TRAIN_NOVEL_NAME=coco14_trainval_novel_${shot}shot_seed${seed}
         TEST_NOVEL_NAME=coco14_test_novel
-        CONFIG_PATH=configs/coco/dcfs_FSIS_${NET}_novel_${shot}shot_seedx.yaml
+        CONFIG_PATH=configs/coco/dcfs_fsod_${NET}_novel_${shot}shot_seedx.yaml
 
         OUTPUT_DIR=${SAVEDIR}/dcfs_fsis_${NET}_novel/tfa-like-${classloss}/${shot}shot_seed${seed}
         python3 main.py --num-gpus ${NUNMGPU} --config-file ${CONFIG_PATH}       \
@@ -78,7 +78,7 @@ do
     do
         TRAIN_ALL_NAME=coco14_trainval_all_${shot}shot_seed${seed}
         TEST_ALL_NAME=coco14_test_all
-        CONFIG_PATH=configs/coco/dcfs_gFSIS_${NET}_novel_${shot}shot_seedx.yaml
+        CONFIG_PATH=configs/coco/dcfs_gfsod_${NET}_novel_${shot}shot_seedx.yaml
         
         OUTPUT_DIR=${SAVEDIR}/dcfs_gfsis_${NET}_novel/tfa-like-${classloss}/${shot}shot_seed${seed}
         python3 main.py --num-gpus ${NUNMGPU} --config-file ${CONFIG_PATH}                 \
