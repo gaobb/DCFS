@@ -45,8 +45,8 @@ do
         OUTPUT_DIR=${SAVEDIR}/dcfs_fsod_${NET}_novel${SPLIT_ID}/tfa-like-${classloss}/${shot}shot_seed${seed}
         BASE_WEIGHT=$OUTPUT_DIR/model_final.pth
         python3 main.py --num-gpus ${NUNMGPU} --config-file ${CONFIG_PATH}                             \
-            --eval-only \
             --opts MODEL.WEIGHTS ${BASE_WEIGHT} OUTPUT_DIR ${OUTPUT_DIR}                      \
+                   MODEL.ROI_BOX_HEAD.BBOX_CLS_LOSS_TYPE ${classloss} \
                    DATASETS.TRAIN "('"${TRAIN_NOVEL_NAME}"',)" \
                    DATASETS.TEST  "('"${TEST_NOVEL_NAME}"',)"  \
                    TEST.PCB_MODELPATH ${IMAGENET_PRETRAIN_TORCH} \
@@ -78,6 +78,7 @@ do
         OUTPUT_DIR=${SAVEDIR}/dcfs_gfsod_${NET}_novel${SPLIT_ID}/tfa-like-${classloss}/${shot}shot_seed${seed} 
         python3 main.py --num-gpus ${NUNMGPU}  --config-file ${CONFIG_PATH}                            \
             --opts MODEL.WEIGHTS ${BASE_WEIGHT} OUTPUT_DIR ${OUTPUT_DIR}                     \
+                   MODEL.ROI_BOX_HEAD.BBOX_CLS_LOSS_TYPE ${classloss} \
                    DATASETS.TRAIN "('"${TRAIN_ALL_NAME}"',)" \
                    DATASETS.TEST  "('"${TEST_ALL_NAME}"',)"  \
                    TEST.PCB_MODELPATH ${IMAGENET_PRETRAIN_TORCH} \
