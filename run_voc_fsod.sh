@@ -43,7 +43,6 @@ do
         CONFIG_PATH=configs/voc/dcfs_fsod_${NET}_novelx_${shot}shot_seedx.yaml
 
         OUTPUT_DIR=${SAVEDIR}/dcfs_fsod_${NET}_novel${SPLIT_ID}/tfa-like-${classloss}/${shot}shot_seed${seed}
-        BASE_WEIGHT=$OUTPUT_DIR/model_final.pth
         python3 main.py --num-gpus ${NUNMGPU} --config-file ${CONFIG_PATH}                             \
             --opts MODEL.WEIGHTS ${BASE_WEIGHT} OUTPUT_DIR ${OUTPUT_DIR}                      \
                    MODEL.ROI_BOX_HEAD.BBOX_CLS_LOSS_TYPE ${classloss} \
