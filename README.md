@@ -80,13 +80,16 @@ The baseline DeFRCN may tend to incorrectly recognize positive object as backgro
 If you find this code useful in your research, please consider citing us:
 ```
 @inproceedings{gao2022dcfs,
-	title={Decoupling Classifier for Boosting Few-shot Object Detection and Instance Segmentation},
-	author={Gao, Bin-Bin and Chen, Xiaochen and Huang, Zhongyi and Nie, Congchong and Liu, Jun and Lai, Jinxiang and Jiang, Guannan and Wang, Xi and Wang, Chengjie},
-	booktitle={Thirty-sixth Conference on Neural Information Processing Systems (NeurIPS 2022)},
-	pages={--},
-	year={2022}
-	}  
+  title={Decoupling classifier for boosting few-shot object detection and instance segmentation},
+  author={Gao, Bin-Bin and Chen, Xiaochen and Huang, Zhongyi and Nie, Congchong and Liu, Jun and Lai, Jinxiang and Jiang, Guannan and Wang, Xi and Wang, Chengjie},
+  booktitle={Advances in Neural Information Processing Systems (NeurIPS 2022)},
+  pages={18640--18652},
+  year={2022}
+}
 ```
 
 ## Acknowledgement
 This repo is developed based on [DeFRCN](https://github.com/er-muyue/DeFRCN) and [Detectron2](https://github.com/facebookresearch/detectron2). 
+
+## Discussion
+<div align="center"><img src="./wechatgroup.jpg" width="200"></div>
