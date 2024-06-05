@@ -21,6 +21,17 @@ This repository is a official PyTorch implementation of [Decoupling Classifier f
   bash run_coco_fsis.sh r101 8 dcfs 
   ```
 
+* Model Weighs for Base Pre-Training
+
+  | datasets |  Task |  Model Weghts |
+  |:---:|:---:|:---:|
+  |COCO-Base |Detection|[model](https://drive.google.com/file/d/1yQHi3x9FA7fA5CYZCyW5c8rLPscImXED/view?usp=drive_link)|
+  |COCO-Base |Instance Segmentation|[model](https://drive.google.com/file/d/1FCeZzXgtIDz8-rfJy2-Pa10PMPMDnxcl/view?usp=drive_link)|
+  |VOC-Base1 |Detection|[model](https://drive.google.com/file/d/1ecpzoM10z7YL2SjhFULUOahi6sJrKgRf/view?usp=drive_link)|
+  |VOC-Base2 |Detection|[model](https://drive.google.com/file/d/1a_XefCdQIac6sicDbJpfktF2GuLRU0rC/view?usp=drive_link)|
+  |VOC-Base3 |Detection|[model](https://drive.google.com/file/d/1zxs66CXBOFDTFdMEa5v6ijIZSaORCSo7/view?usp=drive_link)|
+
+
 ## Results on COCO Benchmark
 * Few-shot Object Detection
 
