@@ -14,11 +14,11 @@ This repository is a official PyTorch implementation of [Decoupling Classifier f
 ## Training and Evaluation
 * To reproduce the FSOD/gFSOD results on COCO
   ```angular2html
-  bash run_coco_fsod.sh r101 dcfs 8
+  bash run_coco_fsod.sh r101 8 dcfs
   ```
 * To reproduce the FSIS/gFSIS results on COCO
   ```angular2html
-  bash run_coco_fsis.sh r101 dcfs 8
+  bash run_coco_fsis.sh r101 8 dcfs 
   ```
 
 ## Results on COCO Benchmark

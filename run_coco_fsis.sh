@@ -2,8 +2,8 @@
 NET=$1
 NUNMGPU=$2
 EXPNAME=$3
-SAVEDIR=workspace/DCFS/coco-seg/${EXPNAME}  #<-- change it to you path
-PRTRAINEDMODEL=pretrained_models/           #<-- change it to you path
+SAVEDIR=workspace/DCFS/coco-seg/${EXPNAME}  #<-- change it to your path
+PRTRAINEDMODEL=pretrained_models/           #<-- change it to your path
 
 
 if [ "$NET"x = "r101"x ]; then
