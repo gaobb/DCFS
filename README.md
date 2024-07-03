@@ -108,7 +108,7 @@ results_json='dcfs_gfsod_${NET}_novel/tfa-like-DC/${shot}shot_seed${seed}/only-i
 
 python3 tools/visualize_results.py   \
         --input $results_json \
-        --out 10shot-seed1   \
+        --out ./output/coco14_${shot}shot_seed${seed}_vis_res  \
         --dataset  coco14_trainval_all_${shot}shot_seed${seed} 
 ```
 
