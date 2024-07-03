@@ -84,6 +84,35 @@ This repository is a official PyTorch implementation of [Decoupling Classifier f
 - The results of mAP<sup>base</sup> and mAP<sup>all</sup> for gFSOD and gFSIS can be seen at the [Supplementary Material](https://openreview.net/attachment?id=dVXO3Orjmxk&name=supplementary_material) and [ProjectPage](https://csgaobb.github.io/Projects/DCFS).
 
 ## Visualization Results 
+```
+seed=1
+shot=10
+NET=r101
+
+python3 tools/create_config.py \
+        --dataset coco14      \
+        --config_root configs/coco \
+        --shot ${shot} \
+        --seed ${seed} \
+        --setting 'gfsod'
+                
+CONFIG_PATH=configs/coco/dcfs_gfsod_${NET}_novel_${shot}shot_seed${seed}.yaml
+output_dir=./output/coco-${shot}shot-seed${seed}
+python3 tools/visualize_data.py \
+    --source annotation  \
+    --config-file  $CONFIG_PATH  \
+    --output-dir $output_dir
+
+
+results_json='dcfs_gfsod_${NET}_novel/tfa-like-DC/${shot}shot_seed${seed}/only-inference/coco_instances_results.json'
+
+python3 tools/visualize_results.py   \
+        --input $results_json \
+        --out 10shot-seed1   \
+        --dataset  coco14_trainval_all_${shot}shot_seed${seed} 
+```
+
+
 The baseline DeFRCN may tend to incorrectly recognize positive object as background (middle two rows) due to the biased classification. This problem is greatly alleviated using our proposed method (DCFS).
 <div align="center"><img src="assets/DCFS-Vis.png" width="800"></div>
 
