@@ -138,3 +138,8 @@ This repo is developed based on [DeFRCN](https://github.com/er-muyue/DeFRCN) and
 
 ## Discussion
 <div align="center"><img src="./wechatgroup.jpg" width="200"></div>
+
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=gaobb/DCFS&type=Date)](https://www.star-history.com/#gaobb/DCFS&Date)
