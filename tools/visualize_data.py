@@ -7,12 +7,11 @@ import cv2
 import tqdm
 from PIL import Image
 
-#from detectron2.config import get_cfg
-from defrcn.config import get_cfg, set_global_cfg
+from dcfs.config import get_cfg, set_global_cfg
 from detectron2.data import DatasetCatalog, MetadataCatalog #build_detection_train_loader
-from maskdefrcn.dataloader.build import build_batch_data_loader, build_detection_test_loader, build_detection_train_loader
-from maskdefrcn.dataloader.dataset_mapper import DatasetMapper
-from maskdefrcn.data import register_all_coco
+from dcfs.dataloader.build import build_batch_data_loader, build_detection_test_loader, build_detection_train_loader
+from dcfs.dataloader.dataset_mapper import DatasetMapper
+from dcfs.data import register_all_coco
 from detectron2.data import detection_utils as utils
 from detectron2.data.build import filter_images_with_few_keypoints
 from detectron2.utils.logger import setup_logger

@@ -88,28 +88,14 @@ This repository is a official PyTorch implementation of [Decoupling Classifier f
 seed=1
 shot=10
 NET=r101
+setting="gfsis"
 
-python3 tools/create_config.py \
-        --dataset coco14      \
-        --config_root configs/coco \
-        --shot ${shot} \
-        --seed ${seed} \
-        --setting 'gfsod'
-                
-CONFIG_PATH=configs/coco/dcfs_gfsod_${NET}_novel_${shot}shot_seed${seed}.yaml
-output_dir=./output/coco-${shot}shot-seed${seed}
-python3 tools/visualize_data.py \
-    --source annotation  \
-    --config-file  $CONFIG_PATH  \
-    --output-dir $output_dir
-
-
-results_json='dcfs_gfsod_${NET}_novel/tfa-like-DC/${shot}shot_seed${seed}/only-inference/coco_instances_results.json'
+results_json='dcfs_${setting}_${NET}_novel/tfa-like-DC/${shot}shot_seed${seed}/inference/coco_instances_results.json'
 
 python3 tools/visualize_results.py   \
         --input $results_json \
-        --out ./output/coco14_${shot}shot_seed${seed}_vis_res  \
-        --dataset  coco14_trainval_all_${shot}shot_seed${seed} 
+        --out ./output/coco14_dcfs_${setting}_${NET}_novel_${shot}shot_seed${seed}_vis_res  \
+        --dataset  coco14_test_all
 ```
 
 

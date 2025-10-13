@@ -14,7 +14,7 @@ from PIL import Image
 import torch 
 
 from detectron2.data import DatasetCatalog, MetadataCatalog
-from maskdefrcn.data import register_all_coco
+from dcfs.data import register_all_coco
 from detectron2.structures import Boxes, BoxMode, Instances
 from detectron2.utils.logger import setup_logger
 from detectron2.utils.visualizer import Visualizer
@@ -113,18 +113,22 @@ class Visualizer(Visualizer):
 
 def create_instances(predictions, image_size):
     ret = Instances(image_size)
-
     score = np.asarray([x["score"] for x in predictions])
     chosen = (score > args.conf_threshold).nonzero()[0]
+    if chosen.size == 0:
+        # 如果没有满足条件的预测框，直接返回一个空的 Instances 对象
+        return ret
+
     score = score[chosen]
     bbox = np.asarray([predictions[i]["bbox"] for i in chosen])
+        
     bbox = BoxMode.convert(bbox, BoxMode.XYWH_ABS, BoxMode.XYXY_ABS)
 
-    #labels = np.asarray([dataset_id_map(predictions[i]["category_id"]) for i in chosen])
+    labels = np.asarray([dataset_id_map(predictions[i]["category_id"]) for i in chosen])
 
     ret.scores = score
     ret.pred_boxes = Boxes(bbox)
-    #ret.pred_classes = labels
+    ret.pred_classes = labels
 
     try:
         ret.pred_masks = [predictions[i]["segmentation"] for i in chosen]
@@ -140,7 +144,7 @@ if __name__ == "__main__":
     parser.add_argument("--input", required=True, help="JSON file produced by the model")
     parser.add_argument("--output", required=True, help="output directory")
     parser.add_argument("--dataset", help="name of the dataset", default="coco_2017_val")
-    parser.add_argument("--conf-threshold", default=0.5, type=float, help="confidence threshold")
+    parser.add_argument("--conf-threshold", default=0.6, type=float, help="confidence threshold")
     args = parser.parse_args()
 
     logger = setup_logger()
@@ -176,21 +180,19 @@ if __name__ == "__main__":
         data_path = os.path.dirname(dic["file_name"])
         image_name = dic["file_name"].split('/')[-1]
         file_name = os.path.join(data_path,  image_name.split('_')[1], image_name)
-
+       
         img = cv2.imread(file_name, cv2.IMREAD_COLOR)
-   
+         
+        
         predictions = create_instances(pred_by_image[dic["image_id"]], img.shape[:2])
-
+        
         vis = Visualizer(img)
         vis_gt = vis.draw_dataset_dict(dic).get_image()
-        #cv2.imwrite(os.path.join('temp.jpg'), vis_gt)
-        #cv2.imwrite(os.path.join('img.jpg'), img)
-
+       
         vis = Visualizer(img, metadata)
         vis_pred = vis.draw_instance_predictions(predictions).get_image()
-        cv2.imwrite(os.path.join(args.output, basename), vis_pred[:, :, ::-1])
         vis = Visualizer(img, metadata)
         vis_gt = vis.draw_dataset_dict(dic).get_image()
 
         concat = np.concatenate((vis_pred, vis_gt), axis=1)
-        cv2.imwrite(os.path.join(args.output, basename), concat[:, :, ::-1])
+        cv2.imwrite(os.path.join(args.output, image_name), concat[:, :, ::-1])
