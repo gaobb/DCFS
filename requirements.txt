@@ -1,2 +1,15 @@
-opencv-python
-sklearn
+detectron2==0.6
+fvcore==0.1.5.post20211023
+ipdb==0.13.13
+numpy==1.24.4
+opencv_python==4.6.0.66
+opencv_python_headless==4.7.0.72
+Pillow==8.4.0
+Pillow==11.3.0
+pycocotools==2.0.3
+scikit_learn==1.1.1
+tabulate==0.8.9
+termcolor==1.1.0
+torch==1.12.1+cu113
+torchvision==0.13.1+cu113
+tqdm==4.62.3

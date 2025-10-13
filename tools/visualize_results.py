@@ -191,8 +191,6 @@ if __name__ == "__main__":
        
         vis = Visualizer(img, metadata)
         vis_pred = vis.draw_instance_predictions(predictions).get_image()
-        vis = Visualizer(img, metadata)
-        vis_gt = vis.draw_dataset_dict(dic).get_image()
-
+     
         concat = np.concatenate((vis_pred, vis_gt), axis=1)
         cv2.imwrite(os.path.join(args.output, image_name), concat[:, :, ::-1])
